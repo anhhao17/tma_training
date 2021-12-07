@@ -1,8 +1,9 @@
 CC=gcc
 CFLAGS=-g -Wall
-TARGET=pipe fifo1 fifo2 f1 f2
+TARGET=intro
+LIBS= -lpthread
 all: clean $(TARGET)
 $(TARGET):
-	$(CC) $(CFLAGS) -o $@ $@.c 
+	$(CC) $(CFLAGS) -o $@ $@.c $(LIBS)
 clean:
 	rm -f $(TARGET)
