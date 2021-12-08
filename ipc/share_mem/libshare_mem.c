@@ -9,7 +9,7 @@
 #include <fcntl.h>
 #include <stdbool.h>
 
-
+#include "libshare_mem.h"
 static int get_shared_block(char *filename,int size){
     key_t key;
     int shmid;
@@ -23,7 +23,7 @@ static int get_shared_block(char *filename,int size){
     }
     return shmid;
 }
-void  *get_attack(char *filename,int size){
+char  *get_attack(char *filename,int size){
     int shmid=get_shared_block(filename,size);
     if(shmid==-1){
         perror("get attack");

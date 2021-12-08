@@ -8,7 +8,7 @@
 #include <sys/shm.h>
 #include <fcntl.h>
 
-#include "share_mem.h"
+#include "libshare_mem.h"
 
 
 int main(int argc,char **argv){

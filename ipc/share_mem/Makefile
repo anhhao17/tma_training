@@ -1,10 +1,14 @@
 CC=gcc
 CFLAGS=-g -Wall
-OBJ=share_mem.o
-TARGET=read write
+
+TARGET=read write 
+lib=libshare_mem.so
 #LIBS= -lpthread
-all: clean $(TARGET)
-$(TARGET): %:%.o $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+all: $(lib) $(TARGET)
+//%.o: libshare_mem.h
+$(TARGET): %:%.c 
+	$(CC) $(CFLAGS) -o $@ $^ -L. -lshare_mem
+$(lib): libshare_mem.c libshare_mem.h
+	$(CC) $(CFLAGS) -fPIC -shared -o $@ $< -lc
 clean:
 	rm -f $(TARGET) *.o
